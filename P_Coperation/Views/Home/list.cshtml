@@ -1,0 +1,36 @@
+﻿@model PagedList<P_Coperation.Models.TBlP_C>
+@{
+    ViewBag.Title = "list";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using PagedList.Mvc;
+@using PagedList;
+@using (Html.BeginForm("list", "Home", FormMethod.Get))
+{
+
+@Html.TextBox("search") <input type="submit" value="search" />
+}
+
+<table class="table table-hover">
+    <tr> 
+        <th>CatName</th>
+        <th>ProId</th>
+        <th>ProName</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CatName</td>
+            <td>@item.ProId</td>
+            <td>@item.ProName</td>
+            <td>
+                <a href="@Url.Action("Edit",new { item.CatId})" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete",new { item.CatId})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, i => Url.Action("list", "Home", new { i, search = Request.QueryString["search"] }))
+

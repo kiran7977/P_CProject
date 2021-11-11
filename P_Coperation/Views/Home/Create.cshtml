@@ -1,0 +1,38 @@
+﻿@model P_Coperation.Models.Pro_Cat
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .error{
+        color:red;
+    }
+</style>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div class="container">
+       <div class="from-group">
+           <label>Catname</label>
+           @Html.ValidationMessageFor(model => model.Catname, "", new { @class = "error" })
+           @Html.TextBoxFor(model => model.Catname, new { @class = "form-control" })
+       </div>
+        <div class="from-group">
+            <label>Proid</label>
+            @Html.ValidationMessageFor(model => model.Proid, "", new { @class = "error" })
+            @Html.TextBoxFor(model => model.Proid, new  { @class = "form-control" })
+        </div>
+        <div class="from-group">
+            <label>Proname</label>
+            @Html.ValidationMessageFor(model => model.Proname, "", new { @class = "error" })
+            @Html.TextBoxFor(model => model.Proname, new  { @class = "form-control" })
+        </div>
+        <div class="from-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("back to list", "list")
+</p>
