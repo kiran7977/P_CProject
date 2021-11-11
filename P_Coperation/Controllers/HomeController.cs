@@ -47,7 +47,7 @@ namespace P_Coperation.Controllers
             using (var context = new ProductCategorydbEntities())
             {
                 List<TBlP_C> list = context.TBlP_C.ToList();
-                return View(context.TBlP_C.Where(x => x.CatName.StartsWith(search) || search == null).ToList().ToPagedList(i ?? 1, 3));
+                return View(context.TBlP_C.Where(x => x.CatName.StartsWith(search) || search == null).ToList().ToPagedList(i ?? 1, 4));
             }
                
         }
